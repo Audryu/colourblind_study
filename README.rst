@@ -1,11 +1,23 @@
-SciKit-Surgery In-Browser Augmented Reality
-===========================================
+SciKit-Surgery Luminance Study
+==============================
 
-This is an attempt to see if we can run augmented reality in your browser, combining model visualisation with vtk.js with a live camera feed.
+.. image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
+   :target: CODE_OF_CONDUCT.md
+
+.. image:: https://img.shields.io/twitter/follow/scikit_surgery?style=social
+   :target: https://twitter.com/scikit_surgery?ref_src=twsrc%5Etfw
+   :alt: Follow scikit_surgery on twitter
+
+Can we use a web app to study the effect of object luminance on depth perception 
+when viewing anatomically realistic augmented reality?
 
 Try it here `here`_.
 
-based on https://kitware.github.io/vtk-js/docs/vtk_vanilla.html
+based on https://github.com/SciKit-Surgery/browser_ar. 
+
+Research inspired by: 
+
+S. Schmidt, G. Bruder and F. Steinicke, "Depth Perception and Manipulation in Projection-Based Spatial Augmented Reality," in Presence, vol. 27, no. 2, pp. 242-256, Feb. 2020, https://doi.org/10.1162/pres_a_00329
 
 ::
   
@@ -16,9 +28,4 @@ based on https://kitware.github.io/vtk-js/docs/vtk_vanilla.html
   npm run build
   npm run start
 
-To run with your webcam locally, you'll need to add a security exception. On google-chrome you can start with. 
-
-::
-  google-chrome --unsafely-treat-insecure-origin-as-secure="http://localhost:8080/" http://localhost:8080/
-
-.. _`here`: https://scikit-surgery.github.io/browser_ar/
+.. _`here`: https://scikit-surgery.github.io/luminance_study/
