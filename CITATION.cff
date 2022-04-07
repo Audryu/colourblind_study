@@ -4,17 +4,8 @@ authors:
 - family-names: "Thompson"
   given-names: "Stephen"
   orcid: "https://orcid.org/0000-0001-7286-1326"
-- family-names: "Dowrick"
-  given-names: "Thomas"
-  orcid: "https://orcid.org/0000-0002-2712-4447"
-- family-names: "Ahmad"
-  given-names: "Mian"
-  orcid: "https://orcid.org/0000-0002-4706-4146"
-- family-names: "Clarkson"
-  given-names: "Matthew"
-  orcid: "https://orcid.org/0000-0002-5565-1252"
-title: "SciKit-Surgery"
-url: "https://github.com/SciKit-Surgery/scikit-surgery"
+title: "luminance_study
+url: "https://github.com/SciKit-Surgery/luminance_study"
 preferred-citation:
   type: article
   authors:
