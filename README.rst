@@ -17,8 +17,9 @@ when viewing anatomically realistic augmented reality?
 Try it here `here`_.
 We can pass various visualisation parameters in the url to change the appearance of the displayed anatomy. For example colour=?????? where ?????? is a 6 digit hexidecimal rgb colour definition. depth = ? where depth is an integer depth value.
 
-`Colour = red, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=FF0000&depth=10>`_
-`Colour = blue, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10>`_
+::
+  `Colour = red, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=FF0000&depth=10>`_
+  `Colour = blue, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10>`_
 
 based on https://github.com/SciKit-Surgery/browser_ar. 
 
