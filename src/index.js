@@ -13,8 +13,12 @@ import { tumouractor } from './sksAnatomy.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
-const colour = url.searchParams.get('colour')
-const depth = url.searchParams.get('depth')
+let colour = url.searchParams.get('colour')
+let depth = url.searchParams.get('depth')
+let opacity = url.searchParams.get('opacity')
+if (colour == null) colour = 'FFFFFF'
+if (depth == null) depth = 0
+if (opacity == null) opacity = 0.0
 console.log(colour)
 console.log(depth)
 // ----------------------------------------------------------------------------
@@ -22,7 +26,7 @@ console.log(depth)
 // ----------------------------------------------------------------------------
 
 const renderWindow = vtkRenderWindow.newInstance()
-const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, 0.0] })
+const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, opacity] })
 renderWindow.addRenderer(renderer)
 
 // ----------------------------------------------------------------------------
