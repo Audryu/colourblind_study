@@ -3,16 +3,13 @@ import '@kitware/vtk.js/favicon.js';
 // Load the rendering pieces we want to use (for both WebGL and WebGPU)
 import '@kitware/vtk.js/Rendering/Profiles/Geometry.js';
 
-import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js';
-import vtkConeSource from '@kitware/vtk.js/Filters/Sources/ConeSource.js';
-import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js';
 import vtkOpenGLRenderWindow from '@kitware/vtk.js/Rendering/OpenGL/RenderWindow.js';
 import vtkRenderWindow from '@kitware/vtk.js/Rendering/Core/RenderWindow.js';
 import vtkRenderWindowInteractor from '@kitware/vtk.js/Rendering/Core/RenderWindowInteractor.js';
 import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js';
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js';
 
-import {coneactor} from './sksAnatomy.js'
+import {tumouractor} from './sksAnatomy.js'
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
@@ -25,14 +22,11 @@ renderWindow.addRenderer(renderer);
 // Simple pipeline ConeSource --> Mapper --> Actor
 // ----------------------------------------------------------------------------
 
-const actor = coneactor();
+tumouractor(handleActor);
 
 // ----------------------------------------------------------------------------
 // Add the actor to the renderer and set the camera based on it
 // ----------------------------------------------------------------------------
-
-renderer.addActor(actor);
-renderer.resetCamera();
 
 // ----------------------------------------------------------------------------
 // Use OpenGL as the backend to view the all this
@@ -70,4 +64,14 @@ interactor.bindEvents(container);
 // ----------------------------------------------------------------------------
 
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance());
+
+function handleActor(error, actor) {
+	console.log('Handling actor');
+	if (error) console.error('Download error!', error)
+	else {
+		renderer.addActor(actor);
+        	console.log(actor);
+        	renderer.resetCamera();
+	}
+};
 
