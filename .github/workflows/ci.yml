@@ -27,7 +27,7 @@ jobs:
 
       - name: lint
         run: |
-          npx standard
+          npx standard "src/*"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
