@@ -10,6 +10,13 @@ import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
 import { tumouractor } from './sksAnatomy.js'
+
+const urlString = window.location.href
+const url = new URL(urlString)
+const colour = url.searchParams.get('colour')
+const depth = url.searchParams.get('depth')
+console.log(colour)
+console.log(depth)
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
