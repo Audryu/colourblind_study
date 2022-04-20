@@ -9,7 +9,7 @@ import vtkRenderWindowInteractor from '@kitware/vtk.js/Rendering/Core/RenderWind
 import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
-import {tumouractor} from './sksAnatomy.js'
+import { tumouractor } from './sksAnatomy.js'
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
@@ -65,13 +65,12 @@ interactor.bindEvents(container)
 
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
-function handleActor(error, actor) {
-	console.log('Handling actor')
-	if (error) console.error('Download error!', error)
-	else {
-		renderer.addActor(actor)
-        	console.log(actor)
-        	renderer.resetCamera()
-	}
+function handleActor (error, actor) {
+  console.log('Handling actor')
+  if (error) console.error('Download error!', error)
+  else {
+    renderer.addActor(actor)
+    console.log(actor)
+    renderer.resetCamera()
+  }
 };
-
