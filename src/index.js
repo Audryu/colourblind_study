@@ -83,5 +83,9 @@ function handleActor (error, actor) {
     renderer.addActor(actor)
     console.log(actor)
     renderer.resetCamera()
+    // I don't know why but we seem to need to invoke an interactor event to get
+    // it to redraw automatically. Just calling render doesn't do it.
+    // openglRenderWindow.render()
+    interactor.invokeLeftButtonPress(0, 0)
   }
 };
