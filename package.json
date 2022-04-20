@@ -1,5 +1,5 @@
 {
-  "name": "browser_ar",
+  "name": "luminance_study",
   "version": "1.0.0",
   "description": "In-browser augmented reality",
   "main": "index.js",
@@ -9,10 +9,10 @@
     "build": "webpack --progress --mode=development",
     "start": "webpack serve --progress --mode=development --static=dist"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Stephen Thompson",
+  "license": "BSD-3-Clause",
   "dependencies": {
-    "@kitware/vtk.js": "^20.2.3"
+    "@kitware/vtk.js": "^20.4.1"
   },
   "devDependencies": {
     "coveralls": "^3.1.1",
@@ -23,5 +23,20 @@
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.4.0"
   },
-  "type":"module"
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SciKit-Surgery/luminance_study.git"
+  },
+  "keywords": [
+    "depth-perception",
+    "vtk"
+  ],
+  "bugs": {
+    "url": "https://github.com/SciKit-Surgery/luminance_study/issues"
+  },
+  "homepage": "https://github.com/SciKit-Surgery/luminance_study#readme"
 }

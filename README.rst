@@ -1,6 +1,9 @@
 SciKit-Surgery Luminance Study
 ==============================
 
+.. image:: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+   :target: https://standardjs.com
+
 .. image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
    :target: CODE_OF_CONDUCT.md
 
@@ -17,7 +20,7 @@ based on https://github.com/SciKit-Surgery/browser_ar.
 
 Research inspired by: 
 
-S. Schmidt, G. Bruder and F. Steinicke, "Depth Perception and Manipulation in Projection-Based Spatial Augmented Reality," in Presence, vol. 27, no. 2, pp. 242-256, Feb. 2020, https://doi.org/10.1162/pres_a_00329
+Susanne Schmidt, Gerd Bruder and Frank Steinicke, "Depth Perception and Manipulation in Projection-Based Spatial Augmented Reality," in Presence, vol. 27, no. 2, pp. 242-256, Feb. 2020, https://doi.org/10.1162/pres_a_00329
 
 ::
   

@@ -17,12 +17,17 @@ jobs:
           npm install esm --save-dev
           npm install nyc --save-dev
           npm install coveralls --save-dev
+          npm install standard --save-dev
           npm run build
 
       - name: test
         run: |
           npm run test
           #npm run coverage
+
+      - name: lint
+        run: |
+          npx standard "src/*"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
