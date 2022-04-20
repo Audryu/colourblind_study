@@ -1,6 +1,9 @@
 SciKit-Surgery Luminance Study
 ==============================
 
+.. image:: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+   :target: https://standardjs.com
+
 .. image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
    :target: CODE_OF_CONDUCT.md
 
