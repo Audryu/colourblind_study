@@ -10,19 +10,24 @@ import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
 import { tumouractor } from './sksAnatomy.js'
+
+const urlString = window.location.href
+const url = new URL(urlString)
+let backOpacity = url.searchParams.get('background_opacity')
+if (backOpacity == null) backOpacity = 0.0
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
 
 const renderWindow = vtkRenderWindow.newInstance()
-const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, 0.0] })
+const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, backOpacity] })
 renderWindow.addRenderer(renderer)
 
 // ----------------------------------------------------------------------------
 // Simple pipeline ConeSource --> Mapper --> Actor
 // ----------------------------------------------------------------------------
 
-tumouractor(handleActor)
+tumouractor(url, handleActor)
 
 // ----------------------------------------------------------------------------
 // Add the actor to the renderer and set the camera based on it
@@ -66,11 +71,13 @@ interactor.bindEvents(container)
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
 function handleActor (error, actor) {
-  console.log('Handling actor')
   if (error) console.error('Download error!', error)
   else {
     renderer.addActor(actor)
-    console.log(actor)
     renderer.resetCamera()
+    // I don't know why but we seem to need to invoke an interactor event to get
+    // it to redraw automatically. Just calling render doesn't do it.
+    // openglRenderWindow.render()
+    interactor.invokeLeftButtonPress(0, 0)
   }
 };
