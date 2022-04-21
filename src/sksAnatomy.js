@@ -17,7 +17,15 @@ export function coneactor () {
   return sksactor
 }
 
-export function tumouractor (callback) {
+export function tumouractor (urlOptions, callback) {
+  let colour = urlOptions.searchParams.get('colour')
+  let depth = urlOptions.searchParams.get('depth')
+  let opacity = urlOptions.searchParams.get('opacity')
+  if (colour == null) colour = 'FFFFFF'
+  if (depth == null) depth = 0
+  if (opacity == null) opacity = 1.0
+  colour = '#' + colour
+
   const reader = vtkXMLPolyDataReader.newInstance()
   const filename = '011_tumor.vtp'
   let error = false
@@ -28,9 +36,9 @@ export function tumouractor (callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    const rgbcol = hexToRgb('#FF9900')
-    console.log(rgbcol)
+    const rgbcol = hexToRgb(colour)
     actor.getProperty().setColor(rgbcol.r, rgbcol.g, rgbcol.b)
+    actor.getProperty().setOpacity(opacity)
     callback(error, actor)
   })
     .catch(err => {

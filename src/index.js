@@ -13,27 +13,21 @@ import { tumouractor } from './sksAnatomy.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
-let colour = url.searchParams.get('colour')
-let depth = url.searchParams.get('depth')
-let opacity = url.searchParams.get('opacity')
-if (colour == null) colour = 'FFFFFF'
-if (depth == null) depth = 0
-if (opacity == null) opacity = 0.0
-console.log(colour)
-console.log(depth)
+let backOpacity = url.searchParams.get('background_opacity')
+if (backOpacity == null) backOpacity = 0.0
 // ----------------------------------------------------------------------------
 // Standard rendering code setup
 // ----------------------------------------------------------------------------
 
 const renderWindow = vtkRenderWindow.newInstance()
-const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, opacity] })
+const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, backOpacity] })
 renderWindow.addRenderer(renderer)
 
 // ----------------------------------------------------------------------------
 // Simple pipeline ConeSource --> Mapper --> Actor
 // ----------------------------------------------------------------------------
 
-tumouractor(handleActor)
+tumouractor(url, handleActor)
 
 // ----------------------------------------------------------------------------
 // Add the actor to the renderer and set the camera based on it
@@ -77,11 +71,9 @@ interactor.bindEvents(container)
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
 function handleActor (error, actor) {
-  console.log('Handling actor')
   if (error) console.error('Download error!', error)
   else {
     renderer.addActor(actor)
-    console.log(actor)
     renderer.resetCamera()
     // I don't know why but we seem to need to invoke an interactor event to get
     // it to redraw automatically. Just calling render doesn't do it.
