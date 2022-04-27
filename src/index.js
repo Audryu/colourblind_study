@@ -8,10 +8,10 @@ import vtkRenderWindow from '@kitware/vtk.js/Rendering/Core/RenderWindow.js'
 import vtkRenderWindowInteractor from '@kitware/vtk.js/Rendering/Core/RenderWindowInteractor.js'
 import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkCamera from '@kitware/vtk.js/Rendering/Core/Camera.js'
-import vtkLight from '@kitware/vtk.js/Rendering/Core/Light.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
 import { tumouractor0, tumouractor1, veinactor } from './sksAnatomy.js'
+import { setupLights } from './lights.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
@@ -33,20 +33,12 @@ camera.setParallelScale(100)
 camera.setClippingRange(300, 1500)
 renderer.setActiveCamera(camera)
 
-// ----------------------------------------------------------------------------
-// Simple pipeline ConeSource --> Mapper --> Actor
-// ----------------------------------------------------------------------------
-
 veinactor(url, handleActor)
 tumouractor0(url, handleActor)
 tumouractor1(url, handleActor)
 
 // some downlighting
-const light0 = vtkLight.newInstance()
-light0.setLightTypeToSceneLight()
-light0.setFocalPoint(150, 0, 0)
-light0.setPosition(150, 200, 200)
-renderer.addLight(light0)
+setupLights(url, renderer)
 
 // ----------------------------------------------------------------------------
 // Use OpenGL as the backend to view the all this
