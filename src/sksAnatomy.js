@@ -17,17 +17,17 @@ export function coneactor () {
   return sksactor
 }
 
-export function tumouractor (urlOptions, callback) {
+export function veinactor (urlOptions, callback) {
   let colour = urlOptions.searchParams.get('colour')
   let depth = urlOptions.searchParams.get('depth')
   let opacity = urlOptions.searchParams.get('opacity')
-  if (colour == null) colour = 'FFFFFF'
+  if (colour == null) colour = 'FF00FF'
   if (depth == null) depth = 0
   if (opacity == null) opacity = 1.0
   colour = '#' + colour
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = '011_tumor.vtp'
+  const filename = 'vtp/hepatic veins.vtp'
   let error = false
   reader.setUrl(`assets/${filename}`).then(() => {
     const polydata = reader.getOutputData(0)
@@ -39,6 +39,68 @@ export function tumouractor (urlOptions, callback) {
     const rgbcol = hexToRgb(colour)
     actor.getProperty().setColor(rgbcol.r, rgbcol.g, rgbcol.b)
     actor.getProperty().setOpacity(opacity)
+    callback(error, actor)
+  })
+    .catch(err => {
+      error = true
+      callback(err, null)
+    })
+}
+
+export function tumouractor0 (urlOptions, callback) {
+  let colour = urlOptions.searchParams.get('colour')
+  let depth = urlOptions.searchParams.get('depth')
+  let opacity = urlOptions.searchParams.get('opacity')
+  if (colour == null) colour = 'FFFFFF'
+  if (depth == null) depth = 0
+  if (opacity == null) opacity = 1.0
+  colour = '#' + colour
+
+  const reader = vtkXMLPolyDataReader.newInstance()
+  const filename = 'vtp/tumor.vtp'
+  let error = false
+  reader.setUrl(`assets/${filename}`).then(() => {
+    const polydata = reader.getOutputData(0)
+    const mapper = vtkMapper.newInstance()
+    const actor = vtkActor.newInstance()
+
+    actor.setMapper(mapper)
+    mapper.setInputData(polydata)
+    const rgbcol = hexToRgb(colour)
+    actor.getProperty().setColor(rgbcol.r, rgbcol.g, rgbcol.b)
+    actor.getProperty().setOpacity(opacity)
+    actor.setPosition(110, 0, 0)
+    callback(error, actor)
+  })
+    .catch(err => {
+      error = true
+      callback(err, null)
+    })
+}
+
+export function tumouractor1 (urlOptions, callback) {
+  let colour = urlOptions.searchParams.get('colour')
+  let depth = urlOptions.searchParams.get('depth')
+  let opacity = urlOptions.searchParams.get('opacity')
+  if (colour == null) colour = 'FFFFFF'
+  if (depth == null) depth = 0
+  if (opacity == null) opacity = 1.0
+  colour = '#' + colour
+
+  const reader = vtkXMLPolyDataReader.newInstance()
+  const filename = 'vtp/tumor.vtp'
+  let error = false
+  reader.setUrl(`assets/${filename}`).then(() => {
+    const polydata = reader.getOutputData(0)
+    const mapper = vtkMapper.newInstance()
+    const actor = vtkActor.newInstance()
+
+    actor.setMapper(mapper)
+    mapper.setInputData(polydata)
+    const rgbcol = hexToRgb(colour)
+    actor.getProperty().setColor(rgbcol.r, rgbcol.g, rgbcol.b)
+    actor.getProperty().setOpacity(opacity)
+    actor.setPosition(100, 20, 100)
     callback(error, actor)
   })
     .catch(err => {

@@ -7,9 +7,10 @@ import vtkOpenGLRenderWindow from '@kitware/vtk.js/Rendering/OpenGL/RenderWindow
 import vtkRenderWindow from '@kitware/vtk.js/Rendering/Core/RenderWindow.js'
 import vtkRenderWindowInteractor from '@kitware/vtk.js/Rendering/Core/RenderWindowInteractor.js'
 import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
+import vtkCamera from '@kitware/vtk.js/Rendering/Core/Camera.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
-import { tumouractor } from './sksAnatomy.js'
+import { tumouractor0, tumouractor1, veinactor } from './sksAnatomy.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
@@ -23,11 +24,21 @@ const renderWindow = vtkRenderWindow.newInstance()
 const renderer = vtkRenderer.newInstance({ background: [0.0, 0.0, 0.0, backOpacity] })
 renderWindow.addRenderer(renderer)
 
+const camera = vtkCamera.newInstance()
+camera.setParallelProjection(true)
+camera.setPosition(-550, 0, 800)
+camera.setFocalPoint(150, 0, 0)
+camera.setParallelScale(100)
+camera.setClippingRange(300, 1500)
+renderer.setActiveCamera(camera)
+
 // ----------------------------------------------------------------------------
 // Simple pipeline ConeSource --> Mapper --> Actor
 // ----------------------------------------------------------------------------
 
-tumouractor(url, handleActor)
+veinactor(url, handleActor)
+tumouractor0(url, handleActor)
+tumouractor1(url, handleActor)
 
 // ----------------------------------------------------------------------------
 // Add the actor to the renderer and set the camera based on it
@@ -74,7 +85,12 @@ function handleActor (error, actor) {
   if (error) console.error('Download error!', error)
   else {
     renderer.addActor(actor)
-    renderer.resetCamera()
+    console.log('position', camera.getPosition())
+    console.log('view up', camera.getViewUp())
+    console.log('pp', camera.getParallelProjection())
+    console.log('focal point', camera.getFocalPoint())
+    console.log('view angle', camera.getViewAngle())
+    console.log('p scale', camera.getParallelScale())
     // I don't know why but we seem to need to invoke an interactor event to get
     // it to redraw automatically. Just calling render doesn't do it.
     // openglRenderWindow.render()
