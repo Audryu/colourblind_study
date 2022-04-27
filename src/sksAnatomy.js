@@ -17,28 +17,82 @@ export function coneactor () {
   return sksactor
 }
 
-export function tumouractor (urlOptions, callback) {
-  let colour = urlOptions.searchParams.get('colour')
-  let depth = urlOptions.searchParams.get('depth')
-  let opacity = urlOptions.searchParams.get('opacity')
-  if (colour == null) colour = 'FFFFFF'
-  if (depth == null) depth = 0
-  if (opacity == null) opacity = 1.0
-  colour = '#' + colour
+export function veinactor (urlOptions, callback) {
+  const id = 'vein'
+  const defaultColour = '6600FF'
+  const actor = vtkActor.newInstance()
+
+  const {
+    diffuseColour, specularColour, diffusePower, specularPower, opacity
+  } = unpackOptions(id, urlOptions, defaultColour)
+  applyProperties(actor, diffuseColour, specularColour,
+    diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = '011_tumor.vtp'
+  const filename = 'vtp/hepatic veins.vtp'
   let error = false
   reader.setUrl(`assets/${filename}`).then(() => {
     const polydata = reader.getOutputData(0)
     const mapper = vtkMapper.newInstance()
-    const actor = vtkActor.newInstance()
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    const rgbcol = hexToRgb(colour)
-    actor.getProperty().setColor(rgbcol.r, rgbcol.g, rgbcol.b)
-    actor.getProperty().setOpacity(opacity)
+    callback(error, actor)
+  })
+    .catch(err => {
+      error = true
+      callback(err, null)
+    })
+}
+
+export function tumouractor0 (urlOptions, callback) {
+  const id = 't0'
+  const defaultColour = '22FF22'
+
+  const actor = vtkActor.newInstance()
+  const {
+    diffuseColour, specularColour, diffusePower, specularPower, opacity
+  } = unpackOptions(id, urlOptions, defaultColour)
+  applyProperties(actor, diffuseColour, specularColour,
+    diffusePower, specularPower, opacity)
+
+  const reader = vtkXMLPolyDataReader.newInstance()
+  const filename = 'vtp/tumor.vtp'
+  let error = false
+  reader.setUrl(`assets/${filename}`).then(() => {
+    const polydata = reader.getOutputData(0)
+    const mapper = vtkMapper.newInstance()
+
+    actor.setMapper(mapper)
+    mapper.setInputData(polydata)
+    actor.setPosition(110, 0, 0)
+    callback(error, actor)
+  })
+    .catch(err => {
+      error = true
+      callback(err, null)
+    })
+}
+export function tumouractor1 (urlOptions, callback) {
+  const id = 't1'
+  const defaultColour = '22FF22'
+
+  const actor = vtkActor.newInstance()
+  const {
+    diffuseColour, specularColour, diffusePower, specularPower, opacity
+  } = unpackOptions(id, urlOptions, defaultColour)
+  applyProperties(actor, diffuseColour, specularColour,
+    diffusePower, specularPower, opacity)
+  const reader = vtkXMLPolyDataReader.newInstance()
+  const filename = 'vtp/tumor.vtp'
+  let error = false
+  reader.setUrl(`assets/${filename}`).then(() => {
+    const polydata = reader.getOutputData(0)
+    const mapper = vtkMapper.newInstance()
+
+    actor.setMapper(mapper)
+    actor.setPosition(100, 20, 100)
+    mapper.setInputData(polydata)
     callback(error, actor)
   })
     .catch(err => {
@@ -56,4 +110,36 @@ function hexToRgb (hex) {
         b: parseInt(result[3], 16) / 255
       }
     : null
+}
+
+function unpackOptions (id, urlOptions, defaultColour) {
+  let diffuseColour = urlOptions.searchParams.get(id + 'diffuseColour')
+  let specularColour = urlOptions.searchParams.get(id + 'specularColour')
+  let diffusePower = urlOptions.searchParams.get(id + 'diffuse')
+  let specularPower = urlOptions.searchParams.get(id + 'specular')
+  let opacity = urlOptions.searchParams.get(id + 'opacity')
+
+  if (diffuseColour == null) diffuseColour = defaultColour
+  if (specularColour == null) specularColour = defaultColour
+  diffuseColour = hexToRgb('#' + diffuseColour)
+  specularColour = hexToRgb('#' + specularColour)
+  if (diffusePower == null) diffusePower = 1.0
+  if (specularPower == null) specularPower = 0.0
+  if (opacity == null) opacity = 1.0
+
+  return {
+    diffuseColour, specularColour, diffusePower, specularPower, opacity
+  }
+}
+
+function applyProperties (actor, diffuseColour, specularColour,
+  diffusePower, specularPower, opacity) {
+  actor.getProperty().setOpacity(opacity)
+  actor.getProperty().setDiffuseColor(diffuseColour.r, diffuseColour.g,
+    diffuseColour.b)
+  actor.getProperty().setDiffuse(diffusePower)
+  console.log(specularColour)
+  actor.getProperty().setSpecularColor(specularColour.r, specularColour.g,
+    specularColour.b)
+  actor.getProperty().setSpecular(specularPower)
 }
