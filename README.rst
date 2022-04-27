@@ -21,7 +21,7 @@ We can pass various visualisation parameters in the url to change the appearance
 - `Colour = blue, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10>`_
 - `Colour = blue, depth = 100, opacity = 1.0, background_opacity = 0.7 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10&opacity=1.0&background_opacity=0.7>`_
 - `Colour = blue, depth = 100, opacity = 0.3 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10&opacity=0.3>`_
-
+- `Multiple anatomy <https://scikit-surgery.github.io/luminance_study/?t1opacity=0.7&t1specularColour=FF2222&t1specular=1.0>`_
 based on https://github.com/SciKit-Surgery/browser_ar. 
 
 Research inspired by: 
