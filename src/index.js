@@ -62,7 +62,7 @@ const background = document.getElementById('background')
 let width = 800
 let height = 600
 if (background !== null) {
-  [ width, height ] = background.getBoundingClientRect()
+  [width, height] = background.getBoundingClientRect()
 }
 openglRenderWindow.setSize(width, height)
 
