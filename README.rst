@@ -1,7 +1,7 @@
 SciKit-Surgery Luminance Study
 ==============================
 
-.. image:: https://github.com/SciKit-Surgery/luminance_study/workflows/.github/workflows/ci.yml/badge.svg
+.. image:: https://github.com/SciKit-Surgery/luminance_study/actions/workflows/.github/workflows/ci.yml/badge.svg
    :target: https://github.com/SciKit-Surgery/luminance_study/actions
    :alt: GitHub Actions CI status
 
