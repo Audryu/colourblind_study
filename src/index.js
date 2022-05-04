@@ -33,13 +33,6 @@ camera.setParallelScale(100)
 camera.setClippingRange(300, 1500)
 renderer.setActiveCamera(camera)
 
-veinactor(url, handleActor)
-tumouractor0(url, handleActor)
-tumouractor1(url, handleActor)
-
-// some downlighting
-setupLights(url, renderer)
-
 // ----------------------------------------------------------------------------
 // Use OpenGL as the backend to view the all this
 // ----------------------------------------------------------------------------
@@ -59,12 +52,11 @@ openglRenderWindow.setContainer(container)
 // Capture size of the video window and set it to the renderWindow
 // ----------------------------------------------------------------------------
 const background = document.getElementById('background')
-let width = 800
-let height = 600
 if (background !== null) {
-  [width, height] = background.getBoundingClientRect()
+  const dims = background.getBoundingClientRect()
+  openglRenderWindow.setSize(dims.width, dims.height)
+  console.log(dims)
 }
-openglRenderWindow.setSize(width, height)
 
 // ----------------------------------------------------------------------------
 // Setup an interactor to handle mouse events
@@ -83,6 +75,13 @@ if (container !== null) {
 
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
+veinactor(url, handleActor)
+tumouractor0(url, handleActor)
+tumouractor1(url, handleActor)
+
+// some downlighting
+setupLights(url, renderer)
+
 function handleActor (error, actor) {
   if (error) console.error('Download error!', error)
   else {
@@ -90,6 +89,6 @@ function handleActor (error, actor) {
     // I don't know why but we seem to need to invoke an interactor event to get
     // it to redraw automatically. Just calling render doesn't do it.
     // openglRenderWindow.render()
-    interactor.invokeLeftButtonPress(0, 0)
+    if (interactor !== null) interactor.invokeLeftButtonPress(0, 0)
   }
 };

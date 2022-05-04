@@ -4,7 +4,7 @@ import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js'
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js'
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 
-const path = 'https://github.com/SciKit-Surgery/luminance_study/blob/master/dist/assets/vtp/'
+const path = 'https://raw.githubusercontent.com/SciKit-Surgery/luminance_study/master/dist/assets/'
 export function coneactor () {
   const coneSource = vtkConeSource.newInstance({ height: 1.0 })
 
