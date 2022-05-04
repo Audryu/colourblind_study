@@ -4,6 +4,10 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    env: 
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
@@ -22,7 +26,7 @@ jobs:
 
       - name: test
         run: |
-          npm run test
+          xvfb-run npm run test
           #npm run coverage
 
       - name: lint
