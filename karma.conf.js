@@ -10,6 +10,8 @@ module.exports = function(config) {
     plugins: [
       require('karma-webpack'),
       require('karma-jasmine'),
+      require('karma-coverage'),
+      require('karma-coveralls'),
       require('karma-chrome-launcher'),
     ],
 
@@ -38,7 +40,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://www.npmjs.com/search?q=keywords:karma-preprocessor
     preprocessors: {
-      'src/**/*.js': ['webpack'],
+      'src/*.js': ['webpack', 'coverage'],
       'src/**/*Spec.js': ['webpack'],
     },
 
@@ -68,8 +70,12 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://www.npmjs.com/search?q=keywords:karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage', 'coveralls'],
 
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/'
+    },
 
     // web server port
     port: 9876,
