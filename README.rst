@@ -1,6 +1,13 @@
 SciKit-Surgery Luminance Study
 ==============================
 
+.. image:: https://github.com/SciKit-Surgery/luminance_study/workflows/.github/workflows/ci.yml/badge.svg
+   :target: https://github.com/SciKit-Surgery/luminance_study/actions
+   :alt: GitHub Actions CI status
+
+.. image:: https://coveralls.io/repos/github/SciKit-Surgery/luminance_study/badge.svg?branch=3-tests
+   :target: https://coveralls.io/github/SciKit-Surgery/luminance_study?branch=3-tests
+
 .. image:: https://img.shields.io/badge/code_style-standard-brightgreen.svg
    :target: https://standardjs.com
 
