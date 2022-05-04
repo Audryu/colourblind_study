@@ -4,7 +4,7 @@
   "description": "In-browser augmented reality",
   "main": "index.js",
   "scripts": {
-    "test": "karma start ./karma.conf.js",
+    "test": "karma start ./karma.conf.js --single-run",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "webpack --progress --mode=development",
     "start": "webpack serve --progress --mode=development --static=dist"
