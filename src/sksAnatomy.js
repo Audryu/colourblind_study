@@ -4,6 +4,7 @@ import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js'
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js'
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 
+const path = `https://github.com/SciKit-Surgery/luminance_study/blob/master/dist/assets/vtp/`
 export function coneactor () {
   const coneSource = vtkConeSource.newInstance({ height: 1.0 })
 
@@ -31,7 +32,7 @@ export function veinactor (urlOptions, callback) {
   const reader = vtkXMLPolyDataReader.newInstance()
   const filename = 'vtp/hepatic veins.vtp'
   let error = false
-  reader.setUrl(`assets/${filename}`).then(() => {
+  reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
     const mapper = vtkMapper.newInstance()
 
@@ -59,7 +60,7 @@ export function tumouractor0 (urlOptions, callback) {
   const reader = vtkXMLPolyDataReader.newInstance()
   const filename = 'vtp/tumor.vtp'
   let error = false
-  reader.setUrl(`assets/${filename}`).then(() => {
+  reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
     const mapper = vtkMapper.newInstance()
 
@@ -86,7 +87,7 @@ export function tumouractor1 (urlOptions, callback) {
   const reader = vtkXMLPolyDataReader.newInstance()
   const filename = 'vtp/tumor.vtp'
   let error = false
-  reader.setUrl(`assets/${filename}`).then(() => {
+  reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
     const mapper = vtkMapper.newInstance()
 

@@ -59,7 +59,11 @@ openglRenderWindow.setContainer(container)
 // Capture size of the video window and set it to the renderWindow
 // ----------------------------------------------------------------------------
 const background = document.getElementById('background')
-const { width, height } = background.getBoundingClientRect()
+let width = 800
+let height = 600
+if (background !== null) {
+  [ width, height ] = background.getBoundingClientRect()
+}
 openglRenderWindow.setSize(width, height)
 
 // ----------------------------------------------------------------------------
@@ -69,7 +73,9 @@ openglRenderWindow.setSize(width, height)
 const interactor = vtkRenderWindowInteractor.newInstance()
 interactor.setView(openglRenderWindow)
 interactor.initialize()
-interactor.bindEvents(container)
+if (container !== null) {
+  interactor.bindEvents(container)
+}
 
 // ----------------------------------------------------------------------------
 // Setup interactor style to use

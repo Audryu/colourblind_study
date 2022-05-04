@@ -22,7 +22,7 @@ jobs:
 
       - name: test
         run: |
-          npm run test
+          xvfb-run npm run test
           #npm run coverage
 
       - name: lint
