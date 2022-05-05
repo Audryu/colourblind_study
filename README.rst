@@ -43,6 +43,7 @@ We can pass various visualisation parameters in the url to change the appearance
 - t1opacity=?? sets the opacity of the second tumour, float from 0.0 to 1.0 Default 1.0
 
 Here are some examples:
+
 - `t0diffuseColour = red <https://scikit-surgery.github.io/luminance_study/?t0diffuseColour=FF0000>`_
 - `t1diffuseColour = blue, veindiffuseColour = green <https://scikit-surgery.github.io/luminance_study/?t1diffuseColour=0000FF&veindiffuseColour=00FF00>`_
 - `t1diffuseColour = blue, t1specularColour = red, t1specular = 0.8 background_opacity = 0.7 <https://scikit-surgery.github.io/luminance_study/?t1diffuseColour=0000FF&t1specularColour=FF0000&t1specular=0.8&background_opacity=0.7>`_
