@@ -22,7 +22,25 @@ Can we use a web app to study the effect of object luminance on depth perception
 when viewing anatomically realistic augmented reality?
 
 Try it here `here`_.
-We can pass various visualisation parameters in the url to change the appearance of the displayed anatomy. For example colour=?????? where ?????? is a 6 digit hexidecimal rgb colour definition. depth = ? where depth is an integer depth value. opacity and background_opacity are floats 0 to 1 defining the opacity of the actor and of the renderwindow. A high render window opacity results in a duller background.
+We can pass various visualisation parameters in the url to change the appearance of the displayed anatomy. Current allowable values are:
+
+- background_opacity=?? takes a float value from 0.0 to 1.0, default 0.0. Increasing the value creates a darkened layer infront of the background image, making it appear less bright.
+- spotlight if this is included in the URL we add a fixed spotlight to the scene. (defined in src/lights.js)
+- veindiffuseColour=?????? sets the diffuse colour of the veins, 6 digit hexidecimal RGB code. Default 6600FF
+- veinspecularColour=?????? sets the specular colour of the veins, 6 digit hexidecimal RGB code. Default 6600FF
+- veindiffuse=?? sets the diffuse power of the veins, float from 0.0 to 1.0 Default 1.0
+- veinspecular=?? sets the specular power of the veins, float from 0.0 to 1.0 Default 0.0
+- veinopacity=?? sets the opacity of the veins, float from 0.0 to 1.0 Default 1.0
+- t0diffuseColour=?????? sets the diffuse colour of the first tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t0specularColour=?????? sets the specular colour of the first tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t0diffuse=?? sets the diffuse power of the first tumour, float from 0.0 to 1.0 Default 1.0
+- t0specular=?? sets the specular power of the first tumour, float from 0.0 to 1.0 Default 0.0
+- t0opacity=?? sets the opacity of the first tumour, float from 0.0 to 1.0 Default 1.0
+- t1diffuseColour=?????? sets the diffuse colour of the second tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t1specularColour=?????? sets the specular colour of the second tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t1diffuse=?? sets the diffuse power of the second tumour, float from 0.0 to 1.0 Default 1.0
+- t1specular=?? sets the specular power of the second tumour, float from 0.0 to 1.0 Default 0.0
+- t1opacity=?? sets the opacity of the second tumour, float from 0.0 to 1.0 Default 1.0
 
 - `Colour = red, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=FF0000&depth=10>`_
 - `Colour = blue, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10>`_
