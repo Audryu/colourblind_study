@@ -22,7 +22,7 @@ Can we use a web app to study the effect of object luminance on depth perception
 when viewing anatomically realistic augmented reality?
 
 Try it here `here`_.
-We can pass various visualisation parameters in the url to change the appearance of the displayed anatomy. Current allowable values are:
+We can pass various visualisation parameters in the url to change the appearance of the displayed anatomy. Parameters are preceded by a '?' and separated by a '&', see the examples below for some ideas on how to format your URL. Current allowable values are:
 
 - background_opacity=?? takes a float value from 0.0 to 1.0, default 0.0. Increasing the value creates a darkened layer infront of the background image, making it appear less bright.
 - spotlight if this is included in the URL we add a fixed spotlight to the scene. (defined in src/lights.js)
