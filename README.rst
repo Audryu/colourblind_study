@@ -31,22 +31,23 @@ We can pass various visualisation parameters in the url to change the appearance
 - veindiffuse=?? sets the diffuse power of the veins, float from 0.0 to 1.0 Default 1.0
 - veinspecular=?? sets the specular power of the veins, float from 0.0 to 1.0 Default 0.0
 - veinopacity=?? sets the opacity of the veins, float from 0.0 to 1.0 Default 1.0
-- t0diffuseColour=?????? sets the diffuse colour of the first tumour, 6 digit hexidecimal RGB code. Default 6600FF
-- t0specularColour=?????? sets the specular colour of the first tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t0diffuseColour=?????? sets the diffuse colour of the first tumour, 6 digit hexidecimal RGB code. Default 22FF22
+- t0specularColour=?????? sets the specular colour of the first tumour, 6 digit hexidecimal RGB code. Default 22FF22
 - t0diffuse=?? sets the diffuse power of the first tumour, float from 0.0 to 1.0 Default 1.0
 - t0specular=?? sets the specular power of the first tumour, float from 0.0 to 1.0 Default 0.0
 - t0opacity=?? sets the opacity of the first tumour, float from 0.0 to 1.0 Default 1.0
-- t1diffuseColour=?????? sets the diffuse colour of the second tumour, 6 digit hexidecimal RGB code. Default 6600FF
-- t1specularColour=?????? sets the specular colour of the second tumour, 6 digit hexidecimal RGB code. Default 6600FF
+- t1diffuseColour=?????? sets the diffuse colour of the second tumour, 6 digit hexidecimal RGB code. Default 22FF22
+- t1specularColour=?????? sets the specular colour of the second tumour, 6 digit hexidecimal RGB code. Default 22FF22
 - t1diffuse=?? sets the diffuse power of the second tumour, float from 0.0 to 1.0 Default 1.0
 - t1specular=?? sets the specular power of the second tumour, float from 0.0 to 1.0 Default 0.0
 - t1opacity=?? sets the opacity of the second tumour, float from 0.0 to 1.0 Default 1.0
 
-- `Colour = red, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=FF0000&depth=10>`_
-- `Colour = blue, depth = 100 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10>`_
-- `Colour = blue, depth = 100, opacity = 1.0, background_opacity = 0.7 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10&opacity=1.0&background_opacity=0.7>`_
-- `Colour = blue, depth = 100, opacity = 0.3 <https://scikit-surgery.github.io/luminance_study/?colour=0000FF&depth=10&opacity=0.3>`_
-- `Multiple anatomy <https://scikit-surgery.github.io/luminance_study/?t1opacity=0.7&t1specularColour=FF2222&t1specular=1.0&veinopacity=0.4&spotlight>`_
+Here are some examples:
+- `t0diffuseColour = red <https://scikit-surgery.github.io/luminance_study/?t0diffuseColour=FF0000>`_
+- `t1diffuseColour = blue, veindiffuseColour = green <https://scikit-surgery.github.io/luminance_study/?t1diffuseColour=0000FF&veindiffuseColour=00FF00>`_
+- `t1diffuseColour = blue, t1specularColour = red, t1specular = 0.8 background_opacity = 0.7 <https://scikit-surgery.github.io/luminance_study/?t1diffuseColour=0000FF&t1specularColour=FF0000&t1specular=0.8&background_opacity=0.7>`_
+- `t0diffuseColour = blue, t0opacity = 0.3 <https://scikit-surgery.github.io/luminance_study/?t0diffuseColour=0000FF&t0opacity=0.3>`_
+- `Multiple anatomy example <https://scikit-surgery.github.io/luminance_study/?t1opacity=0.7&t1specularColour=FF2222&t1specular=1.0&veinopacity=0.4&spotlight>`_
 based on https://github.com/SciKit-Surgery/browser_ar. 
 
 Research inspired by: 
