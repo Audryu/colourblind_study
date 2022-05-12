@@ -92,7 +92,7 @@ export function tumouractor1 (urlOptions, callback) {
     const mapper = vtkMapper.newInstance()
 
     actor.setMapper(mapper)
-    actor.setPosition(0, 60, 0)
+    actor.setPosition(100, 60, 100)
     mapper.setInputData(polydata)
     callback(error, actor)
   })
