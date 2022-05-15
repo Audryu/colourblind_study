@@ -66,7 +66,7 @@ export function tumouractor0 (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(115, -5, 0)
+    actor.setPosition(125, -10, 0)
     callback(error, actor)
   })
     .catch(err => {
