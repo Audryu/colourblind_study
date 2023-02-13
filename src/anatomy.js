@@ -29,7 +29,7 @@ export function liveractor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'vtp/liver.vtp'
+  const filename = 'assets/liver.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
@@ -57,7 +57,7 @@ export function gallbladderactor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'vtp/gallbladder.vtp'
+  const filename = 'assets/gallbladder.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
@@ -84,7 +84,7 @@ export function tumouractor (urlOptions, callback) {
   applyProperties(actor, diffuseColour, specularColour,
     diffusePower, specularPower, opacity)
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'vtp/tumor.vtp'
+  const filename = 'assets/tumor.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
