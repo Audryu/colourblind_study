@@ -1,10 +1,9 @@
-// Pull the logic for making anatomy actors out of main loop
 import vtkConeSource from '@kitware/vtk.js/Filters/Sources/ConeSource.js'
 import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js'
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js'
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 
-const path = 'https://raw.githubusercontent.com/SciKit-Surgery/luminance_study/master/dist/assets/'
+const path = 'https://github.com/Audryu/colourblind_study/tree/main/dist/assets'
 export function coneactor () {
   const coneSource = vtkConeSource.newInstance({ height: 1.0 })
 
@@ -18,8 +17,8 @@ export function coneactor () {
   return sksactor
 }
 
-export function veinactor (urlOptions, callback) {
-  const id = 'vein'
+export function liveractor (urlOptions, callback) {
+  const id = 'liver'
   const defaultColour = '6600FF'
   const actor = vtkActor.newInstance()
 
@@ -30,7 +29,7 @@ export function veinactor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'vtp/hepatic veins.vtp'
+  const filename = 'vtp/liver.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
@@ -46,7 +45,7 @@ export function veinactor (urlOptions, callback) {
     })
 }
 
-export function tumouractor0 (urlOptions, callback) {
+export function gallbladderactor (urlOptions, callback) {
   const id = 't0'
   const defaultColour = '22FF22'
 
@@ -58,7 +57,7 @@ export function tumouractor0 (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'vtp/tumor.vtp'
+  const filename = 'vtp/gallbladder.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
@@ -74,7 +73,7 @@ export function tumouractor0 (urlOptions, callback) {
       callback(err, null)
     })
 }
-export function tumouractor1 (urlOptions, callback) {
+export function tumouractor (urlOptions, callback) {
   const id = 't1'
   const defaultColour = '22FF22'
 
