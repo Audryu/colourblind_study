@@ -10,8 +10,7 @@ import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkCamera from '@kitware/vtk.js/Rendering/Core/Camera.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
-import { tumouractor0, tumouractor1, veinactor } from './sksAnatomy.js'
-import { setupLights } from './lights.js'
+import { gallbladderactor, tumouractor, liveractor } from './anatomy.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
@@ -75,12 +74,6 @@ if (container !== null) {
 
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
-veinactor(url, handleActor)
-tumouractor0(url, handleActor)
-tumouractor1(url, handleActor)
-
-// some downlighting
-setupLights(url, renderer)
 
 function handleActor (error, actor) {
   if (error) console.error('Download error!', error)
