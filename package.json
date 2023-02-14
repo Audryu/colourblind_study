@@ -1,5 +1,5 @@
 {
-  "name": "luminance_study",
+  "name": "colourblind_study",
   "version": "1.0.0",
   "description": "In-browser augmented reality",
   "main": "index.js",
@@ -36,14 +36,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SciKit-Surgery/luminance_study.git"
+    "url": "git+https://github.com/Audryu/colourblind_study.git"
   },
   "keywords": [
     "depth-perception",
     "vtk"
   ],
   "bugs": {
-    "url": "https://github.com/SciKit-Surgery/luminance_study/issues"
+    "url": "https://github.com/Audryu/colourblind_study/issues"
   },
-  "homepage": "https://github.com/SciKit-Surgery/luminance_study#readme"
+  "homepage": "https://github.com/Audryu/colourblind_study#readme"
 }
