@@ -1,21 +1,9 @@
-import vtkConeSource from '@kitware/vtk.js/Filters/Sources/ConeSource.js'
 import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js'
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js'
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 
-const path = 'https://github.com/Audryu/colourblind_study/tree/main/dist/assets'
-export function coneactor () {
-  const coneSource = vtkConeSource.newInstance({ height: 1.0 })
+const path = 'https://raw.githubusercontent.com/Audryu/colourblind_study/master/dist/'
 
-  const mapper = vtkMapper.newInstance()
-  mapper.setInputConnection(coneSource.getOutputPort())
-
-  const sksactor = vtkActor.newInstance()
-  sksactor.setMapper(mapper)
-  sksactor.getProperty().setOpacity(0.5)
-
-  return sksactor
-}
 
 export function liveractor (urlOptions, callback) {
   const id = 'liver'
@@ -46,7 +34,7 @@ export function liveractor (urlOptions, callback) {
 }
 
 export function gallbladderactor (urlOptions, callback) {
-  const id = 't0'
+  const id = 'gallbladder'
   const defaultColour = '22FF22'
 
   const actor = vtkActor.newInstance()
@@ -65,7 +53,6 @@ export function gallbladderactor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(125, -10, 0)
     callback(error, actor)
   })
     .catch(err => {
@@ -73,8 +60,8 @@ export function gallbladderactor (urlOptions, callback) {
       callback(err, null)
     })
 }
-export function tumouractor (urlOptions, callback) {
-  const id = 't1'
+export function tumoractor (urlOptions, callback) {
+  const id = 'tumor'
   const defaultColour = '22FF22'
 
   const actor = vtkActor.newInstance()
@@ -91,7 +78,6 @@ export function tumouractor (urlOptions, callback) {
     const mapper = vtkMapper.newInstance()
 
     actor.setMapper(mapper)
-    actor.setPosition(25, 30, 0)
     mapper.setInputData(polydata)
     callback(error, actor)
   })
