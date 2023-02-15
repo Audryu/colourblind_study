@@ -76,7 +76,7 @@ if (container !== null) {
 interactor.setInteractorStyle(vtkInteractorStyleTrackballCamera.newInstance())
 
 liveractor(url, handleActor)
-tumouractor(url, handleActor)
+tumoractor(url, handleActor)
 gallbladderactor(url, handleActor)
 
 // some downlighting
