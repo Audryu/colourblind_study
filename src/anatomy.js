@@ -5,6 +5,7 @@ import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 const path = 'https://raw.githubusercontent.com/Audryu/colourblind_study/master/dist/'
 
 
+
 export function liveractor (urlOptions, callback) {
   const id = 'liver'
   const defaultColour = '6600FF'
@@ -25,6 +26,8 @@ export function liveractor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
+    actor.setPosition(-0, 0, -1500)
+    actor.rotateWXYZ(-495, 0, 0, 1)
     callback(error, actor)
   })
     .catch(err => {
@@ -53,6 +56,8 @@ export function gallbladderactor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
+    actor.setPosition(-0, 0, -1500)
+    actor.rotateWXYZ(-495, 0, 0, 1)
     callback(error, actor)
   })
     .catch(err => {
@@ -79,6 +84,7 @@ export function tumoractor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
+    actor.setPosition(30, 0, 10)
     callback(error, actor)
   })
     .catch(err => {
