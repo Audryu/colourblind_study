@@ -2,15 +2,63 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <style>
+      /* Define the colorblind filters */
+      .protanopia-filter {
+        filter: url(#protanopia);
+      }
+
+      .deuteranopia-filter {
+        filter: url(#deuteranopia);
+      }
+
+      .tritanopia-filter {
+        filter: url(#tritanopia);
+      }
+    </style>
   </head>
   <body>
-    <div id = "foreground" style = "width:90%; height:90%; position:absolute; left:50px; top:50px; border:2px solid rgb(49, 98, 158); z-index: 1">
+    <!-- Add the SVG filters for colorblindness -->
+    <svg height="0" width="0">
+      <defs>
+        <filter id="protanopia">
+          <feColorMatrix type="matrix"
+            values="0.567, 0.433, 0, 0, 0
+                    0.558, 0.442, 0, 0, 0
+                    0, 0.242, 0.758, 0, 0
+                    0, 0, 0, 1, 0" />
+        </filter>
+        <filter id="deuteranopia">
+          <feColorMatrix type="matrix"
+            values="0.625, 0.375, 0, 0, 0
+                    0.7, 0.3, 0, 0, 0
+                    0, 0.3, 0.7, 0, 0
+                    0, 0, 0, 1, 0" />
+        </filter>
+        <filter id="tritanopia">
+          <feColorMatrix type="matrix"
+            values="0.95, 0.05, 0, 0, 0
+                    0, 0.433, 0.567, 0, 0
+                    0, 0.475, 0.525, 0, 0
+                    0, 0, 0, 1, 0" />
+        </filter>
+      </defs>
+    </svg>
+	
+	<div id = "foreground" style = "width:100%; height:100%; position:absolute; left:50px; top:50px; border:2px solid rgb(49, 98, 158); z-index: 1">
     </div>
-    <div id = "background" style = "width:90%; height:90%; position:absolute; left:50px; top:50px; border:2px solid rgb(49, 98, 158); z-index: 0">
+    <div id = "background" style = "width:100%; height:100%; position:absolute; left:50px; top:50px; border:2px solid rgb(49, 98, 158); z-index: 0">
       <img autoplay="true" id = "background_image" 
         src = "assets/capture-scaled.jpg" style = "width:100%; height:100%; object-fit:contain; z-index: 0">
       </img> 
     </div>
-   <script src="./main.js"></script>
+
+    <!-- Add buttons to change the colorblind filter -->
+    <div>
+	  <script src="./main.js"></script>
+      <button onclick="document.body.classList.remove('deuteranopia-filter'); document.body.classList.remove('tritanopia-filter'); document.body.classList.add('protanopia-filter');">Protanopia</button>
+      <button onclick="document.body.classList.remove('protanopia-filter'); document.body.classList.remove('tritanopia-filter'); document.body.classList.add('deuteranopia-filter');">Deuteranopia</button>
+      <button onclick="document.body.classList.remove('protanopia-filter'); document.body.classList.remove('deuteranopia-filter'); document.body.classList.add('tritanopia-filter');">Tritanopia</button>
+    </div>
   </body>
 </html>
