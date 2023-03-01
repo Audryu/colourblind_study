@@ -15,6 +15,13 @@
       .tritanopia-filter {
         filter: url(#tritanopia);
       }
+	  
+	  #background {
+        background-color: black;
+      }
+	  #foreground {
+        foreground-color: black;
+      }
     </style>
   </head>
   <body>
@@ -45,12 +52,9 @@
       </defs>
     </svg>
 	
-	<div id = "foreground" style = "width:1900px; height:900px; position:absolute; left:0px; top:50px; z-index: 1">
+	<div id = "foreground" style = "width:1900px; height:900px; position:absolute; top:50px; z-index: 1";>
     </div>
-    <div id = "background" style = "width:1900px; height:900px; position:absolute; left:50px; top:50px; z-index: 0">
-      <img autoplay="true" id = "background_image" 
-        src = "assets/capture-scaled.jpg" style = "width:100%; height:100%; object-fit:contain; z-index: 0">
-      </img> 
+    <div id = "background" style = "width:1900px; height:900px; position:absolute; top:50px; z-index: 0";>
     </div>
 
     <!-- Add buttons to change the colorblind filter -->
