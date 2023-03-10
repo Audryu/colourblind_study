@@ -20,4 +20,4 @@ Digital video colourmaps for checking the legibility of displays by dichromats b
   npm run build
   npm run start
 
-.. _`here`: https://scikit-surgery.github.io/luminance_study/
+.. _`here`: https://scikit-surgery.github.io/colourblind_study/
