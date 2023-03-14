@@ -8,9 +8,9 @@ const path = './'
 
 export function liveractor (urlOptions, callback) {
   const id = 'liver'
-  const defaultColour = '6600FF'
+  const defaultColour = '00FFFF'
   const actor = vtkActor.newInstance()
-  const opacity = 0.3
+  const opacity = 0.5
   const {
     diffuseColour, specularColour, diffusePower, specularPower
   } = unpackOptions(id, urlOptions, defaultColour)
@@ -26,6 +26,7 @@ export function liveractor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
+    actor.getProperty(0).setRepresentation(1)
     callback(error, actor)
   })
     .catch(err => {
@@ -36,7 +37,7 @@ export function liveractor (urlOptions, callback) {
 
 export function gallbladderactor (urlOptions, callback) {
   const id = 'gallbladder'
-  const defaultColour = '22FF22'
+  const defaultColour = 'FFFF00'
 
   const actor = vtkActor.newInstance()
   const {
@@ -92,7 +93,7 @@ export function hepaticveinactor (urlOptions, callback) {
 
 export function portalveinactor (urlOptions, callback) {
   const id = 'v2'
-  const defaultColour = '00FF00'
+  const defaultColour = '00F100'
   const actor = vtkActor.newInstance()
 
   const {
@@ -120,7 +121,7 @@ export function portalveinactor (urlOptions, callback) {
 
 export function arteryactor (urlOptions, callback) {
   const id = 'artery'
-  const defaultColour = '00FF00'
+  const defaultColour = '0000FF'
   const actor = vtkActor.newInstance()
 
   const {
@@ -147,9 +148,9 @@ export function arteryactor (urlOptions, callback) {
     })
 }
 
-export function skinactor (urlOptions, callback) {
-  const id = 'skin'
-  const defaultColour = '55FF55'
+export function tumoractor (urlOptions, callback) {
+  const id = 't'
+  const defaultColour = '00FF00'
   const actor = vtkActor.newInstance()
 
   const {
@@ -159,7 +160,7 @@ export function skinactor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'assets/skin.vtp'
+  const filename = 'assets/liver hypervascular lump.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
