@@ -10,7 +10,7 @@ import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkCamera from '@kitware/vtk.js/Rendering/Core/Camera.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
-import { gallbladderactor, liveractor, hepaticveinactor, portalveinactor, arteryactor} from './anatomy.js'
+import { gallbladderactor, liveractor, hepaticveinactor, portalveinactor, arteryactor, skinactor} from './anatomy.js'
 import { setupLights } from './lights.js'
 
 const urlString = window.location.href
@@ -32,7 +32,6 @@ camera.setFocalPoint(150, 0, 0)
 camera.setParallelScale(100)
 camera.setClippingRange(300, 1500)
 renderer.setActiveCamera(camera)
-
 // ----------------------------------------------------------------------------
 // Use OpenGL as the backend to view the all this
 // ----------------------------------------------------------------------------
@@ -80,6 +79,7 @@ gallbladderactor(url, handleActor)
 hepaticveinactor(url, handleActor)
 portalveinactor(url, handleActor)
 arteryactor(url, handleActor)
+skinactor(url, handleActor)
 
 // some downlighting
 setupLights(url, renderer)
@@ -88,6 +88,7 @@ function handleActor (error, actor) {
   if (error) console.error('Download error!', error)
   else {
     renderer.addActor(actor)
+    renderer.resetCamera()
     // I don't know why but we seem to need to invoke an interactor event to get
     // it to redraw automatically. Just calling render doesn't do it.
     // openglRenderWindow.render()
