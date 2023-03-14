@@ -2,8 +2,8 @@ import vtkMapper from '@kitware/vtk.js/Rendering/Core/Mapper.js'
 import vtkActor from '@kitware/vtk.js/Rendering/Core/Actor.js'
 import vtkXMLPolyDataReader from '@kitware/vtk.js/IO/XML/XMLPolyDataReader.js'
 
-const path = 'https://raw.githubusercontent.com/Audryu/colourblind_study/master/dist/'
-
+//const path = 'https://raw.githubusercontent.com/Audryu/colourblind_study/master/dist/'
+const path = './'
 
 
 export function liveractor (urlOptions, callback) {
@@ -26,8 +26,6 @@ export function liveractor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(-0, 0, -1500)
-    actor.rotateWXYZ(-495, 0, 0, 1)
     callback(error, actor)
   })
     .catch(err => {
@@ -56,8 +54,6 @@ export function gallbladderactor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(-0, 0, -1500)
-    actor.rotateWXYZ(-495, 0, 0, 1)
     callback(error, actor)
   })
     .catch(err => {
@@ -79,16 +75,13 @@ export function hepaticveinactor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'assets/hepaticveins.vtp'
+  const filename = 'assets/hepatic veins.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(-10, 20, 160)
-    actor.rotateWXYZ(230, 1, 0, 0)
-    actor.rotateWXYZ(190, 0, 0, 1)
     callback(error, actor)
   })
     .catch(err => {
@@ -109,7 +102,7 @@ export function portalveinactor (urlOptions, callback) {
     diffusePower, specularPower, opacity)
 
   const reader = vtkXMLPolyDataReader.newInstance()
-  const filename = 'assets/portalvein.vtp'
+  const filename = 'assets/portal vein.vtp'
   let error = false
   reader.setUrl(path + filename).then(() => {
     const polydata = reader.getOutputData(0)
@@ -117,10 +110,6 @@ export function portalveinactor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(10, 6, 80)
-    actor.rotateWXYZ(-270, 1, 0, 0)
-    actor.rotateWXYZ(350, 0, 0, 1)
-    actor.rotateWXYZ(190, 0, 1, 0)
     callback(error, actor)
   })
     .catch(err => {
@@ -149,10 +138,6 @@ export function arteryactor (urlOptions, callback) {
 
     actor.setMapper(mapper)
     mapper.setInputData(polydata)
-    actor.setPosition(-5, 65, 90)
-    actor.rotateWXYZ(230, 1, 0, 0)
-    actor.rotateWXYZ(100, 0, 1, 0)
-    actor.rotateWXYZ(-20, 0, 0 ,1)
 
     callback(error, actor)
   })
@@ -161,6 +146,36 @@ export function arteryactor (urlOptions, callback) {
       callback(err, null)
     })
 }
+
+export function skinactor (urlOptions, callback) {
+  const id = 'skin'
+  const defaultColour = '55FF55'
+  const actor = vtkActor.newInstance()
+
+  const {
+    diffuseColour, specularColour, diffusePower, specularPower, opacity
+  } = unpackOptions(id, urlOptions, defaultColour)
+  applyProperties(actor, diffuseColour, specularColour,
+    diffusePower, specularPower, opacity)
+
+  const reader = vtkXMLPolyDataReader.newInstance()
+  const filename = 'assets/skin.vtp'
+  let error = false
+  reader.setUrl(path + filename).then(() => {
+    const polydata = reader.getOutputData(0)
+    const mapper = vtkMapper.newInstance()
+
+    actor.setMapper(mapper)
+    mapper.setInputData(polydata)
+
+    callback(error, actor)
+  })
+    .catch(err => {
+      error = true
+      callback(err, null)
+    })
+}
+
 function hexToRgb (hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
