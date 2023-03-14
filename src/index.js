@@ -10,8 +10,7 @@ import vtkRenderer from '@kitware/vtk.js/Rendering/Core/Renderer.js'
 import vtkCamera from '@kitware/vtk.js/Rendering/Core/Camera.js'
 import vtkInteractorStyleTrackballCamera from '@kitware/vtk.js/Interaction/Style/InteractorStyleTrackballCamera.js'
 
-import { gallbladderactor, liveractor, hepaticveinactor, portalveinactor, arteryactor, skinactor} from './anatomy.js'
-import { setupLights } from './lights.js'
+import { gallbladderactor, liveractor, hepaticveinactor, portalveinactor, arteryactor, tumoractor} from './anatomy.js'
 
 const urlString = window.location.href
 const url = new URL(urlString)
@@ -79,7 +78,7 @@ gallbladderactor(url, handleActor)
 hepaticveinactor(url, handleActor)
 portalveinactor(url, handleActor)
 arteryactor(url, handleActor)
-skinactor(url, handleActor)
+tumoractor(url, handleActor)
 
 // some downlighting
 setupLights(url, renderer)
