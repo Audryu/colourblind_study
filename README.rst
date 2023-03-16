@@ -1,6 +1,7 @@
 SciKit-Surgery Colour-Blindness Study
 ==============================
-
+Protanopia Compatibility:
+?v1diffuseColour=FFFFFF&v2diffuseColour=C4A484
 
 Colour Blindness Filters inspired by:
 https://github.com/DaltonLens/libDaltonLens
