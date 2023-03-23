@@ -65,7 +65,7 @@ export function gallbladderactor (urlOptions, callback) {
 
 export function hepaticveinactor (urlOptions, callback) {
   const id = 'v1'
-  const defaultColour = 'FF0000'
+  const defaultColour = '0000FF'
   const actor = vtkActor.newInstance()
   const mapper = vtkMapper.newInstance() // Define the mapper variable
 
@@ -121,7 +121,7 @@ export function portalveinactor (urlOptions, callback) {
 
 export function arteryactor (urlOptions, callback) {
   const id = 'artery'
-  const defaultColour = '0000FF'
+  const defaultColour = 'FF0000'
   const actor = vtkActor.newInstance()
 
   const {
