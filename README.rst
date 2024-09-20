@@ -7,6 +7,7 @@ Colour Blindness Filters inspired by:
 https://github.com/DaltonLens/libDaltonLens
 
 Based on algorithms:
+
 Computerized simulation of color appearance for dichromats by Brettel, H. and Viénot, F. and Mollon, J. D. (1997). 
 
 Digital video colourmaps for checking the legibility of displays by dichromats by Viénot, F. and Brettel, H. and Mollon, J. D. (1999). 
